@@ -11,6 +11,7 @@ typedef struct pessoaS {
 int main () {
 	//Declaração
 	int n, tamanhom, tamanhoh;
+	int contador = 0;
 	queue <pessoa> filam;
 	queue <pessoa> filah;
 	pessoa aux;
@@ -26,25 +27,53 @@ int main () {
 		filah.push(aux);
 	}
 
-	//Tirando homi da fila de muie
-	if (!filam.empty()) {
-		for (int i = 0; i < n; i++) {
-			if (filam.front().gen == 'H') {
-				aux = filam.front();
-				filam.pop();
+	//Contando quantas muie tem na fila de homi inicialmente
+	tamanhoh = filah.size();
+	for (int i = 0; i < tamanhoh; i++) {
+		if (!filah.empty()) {
+			if (filah.front().gen == 'M') {
+				aux = filah.front();
+				filah.pop();
+				filah.push(aux);
+				contador++; //Essa variável é usada pra contar as muie na fila dos homi
+			}
+			else {
+				aux = filah.front();
+				filah.pop();
 				filah.push(aux);
 			}
 		}
 	}
-
-	//Tirando muie da fila de homi
-	if (!filah.empty()) {
+	//Jogando tudo da fila de muie na fila de homi
+	if (!filam.empty()) {
 		for (int i = 0; i < n; i++) {
+				aux = filam.front();
+				filam.pop();
+				filah.push(aux);
+		}
+	}
+	//Passando todas as muie da fila de homi pra fila de muie e passando os homi pra fila de homi novamente
+	tamanhoh = filah.size();
+	if (!filah.empty()) {
+		for (int i = 0; i < tamanhoh; i++) {
 			if (filah.front().gen == 'M') {
 				aux = filah.front();
 				filah.pop();
 				filam.push(aux);
 			}
+			else {
+				aux = filah.front();
+				filah.pop();
+				filah.push(aux);
+			}
+		}
+	}
+	//Usando a variavel contador pra poder organizar a ordem da fila de muie
+	if (!filam.empty()) {
+		for (int i = 0; i < contador; i++) {
+				aux = filam.front();
+				filam.pop();
+				filam.push(aux);
 		}
 	}
 
@@ -68,6 +97,5 @@ int main () {
 			filah.pop();
 		}
 	}
- 	
 return 0;
 }
