@@ -2,4 +2,4 @@
 Coisas de LAB1
 
 
-Link judge:
+Link judge: http://200.128.51.30/
