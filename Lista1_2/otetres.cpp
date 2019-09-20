@@ -21,17 +21,22 @@ int main () {
     stack<string> pilha;
 
     cin >> n >> a;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {   
         cin >> x;
-        if (pilha.empty()) pilha.push(x);
+        if (pilha.empty()) {
+            pilha.push(x);
+            if (pilha.size() == a) {
+                go = 1; //Variavel pra saber se da game over
+                break;
+            }
+        }
         else {
             if (pilha.top() == inverter(x)) { //Verificando com o inverso
-                pilha.push(x);
-                pilha.pop();
-                if (pilha.size() > a) {
-                    go = 1;
+                if (pilha.size() == a) {
+                    go = 1; //Variavel pra saber se da game over
                     break;
                 }
+                pilha.pop();
                 cont += 10;
             }
             else {
