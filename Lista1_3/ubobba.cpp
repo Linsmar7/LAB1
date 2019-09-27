@@ -5,8 +5,6 @@
 #include <vector>
 using namespace std;
 
-// typedef pair<int, string> par;
-
 int main () {
     ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
     //Declaração
@@ -27,10 +25,11 @@ int main () {
         cin >> aux;
         for (int j = 0; j < aux; j++) {
             cin >> pa;
-            palavrasNaoRepetidas.insert(pa);
             if (dic.count(pa)) {
+                palavrasCensuradas.insert(pa);
                 pa = "bobba";
             }
+            else palavrasNaoRepetidas.insert(pa);
             frase.push_back(pa);
         }
         vector<string>::iterator it;
@@ -38,6 +37,6 @@ int main () {
         cout << endl;
         frase.erase(frase.begin(), frase.end());
     }
-    cout << palavrasNaoRepetidas.size() << " " << cens << endl;
+    cout << palavrasNaoRepetidas.size() << " " << palavrasCensuradas.size() << endl;
 return 0;
 }
