@@ -6,7 +6,7 @@ int main () {
     //Declaração
     int n, m, aux;
     set<int> filhos;
-    pair<int> p;
+    pair<int, int> p;
 
     //Entrada
     cin >> n >> m;
@@ -20,6 +20,6 @@ int main () {
     }
 
     //Saida
-    
+    cout << filhos.size() << endl;
 return 0;
 }
