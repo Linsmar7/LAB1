@@ -11,12 +11,14 @@ int main() {
     string a, b, frase;
     char o, d;
     map_t map;
+    map_t mapd;
     map_t::iterator it;
 //Entrada com saida
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
         cin >> a >> b;
         map[a] = b;
+        mapd[b] = a;
     }
     for (int i = 0; i < m; i++) {
         cin >> o >> d >> l;
@@ -29,7 +31,7 @@ int main() {
             else x++;
         }
         x = 0;
-        if (o == 'A') {
+        if (o == 'A' && d == 'B') {
             for (int i = 0; i < l; i++) {
                 it = map.find(f[i]);
                 if (!(it == map.end())) f[i] = it->second;
@@ -37,10 +39,16 @@ int main() {
             }
             cout << endl;
         }
-        if (o == 'B') {
+        else if (o == 'B' && d == 'A') {
             for (int i = 0; i < l; i++) {
-                it = map.find(f[i]);
-                
+                it = mapd.find(f[i]);
+                if (!(it == mapd.end())) f[i] = it->second;
+                cout << f[i] << " ";
+            }
+            cout << endl;
+        }
+        else {
+            for (int i = 0; i < l; i++) {
                 cout << f[i] << " ";
             }
             cout << endl;
