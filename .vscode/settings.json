@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "stack": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "string": "cpp"
     }
 }
